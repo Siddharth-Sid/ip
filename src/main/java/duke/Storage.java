@@ -7,6 +7,8 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import duke.command.CommandTypes;
 import duke.task.ToDoTask;
 import duke.task.Task;
 import duke.task.EventTask;
@@ -90,15 +92,15 @@ public class Storage {
      * @param command The Command Passed for comparing to the different types of Commands
      * @return The Type of Command Received
      */
-    public Command.Commands getCommand(String command) {
+    public CommandTypes getCommand(String command) {
         try {
             if (command != null) {
-                return Command.Commands.valueOf(command.toUpperCase());
+                return CommandTypes.valueOf(command.toUpperCase());
             } else {
-                return Command.Commands.UNKNOWN;
+                return CommandTypes.UNKNOWN;
             }
         } catch (IllegalArgumentException e) {
-            return Command.Commands.UNKNOWN;
+            return CommandTypes.UNKNOWN;
         }
     }
 

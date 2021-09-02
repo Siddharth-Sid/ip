@@ -2,8 +2,8 @@ import duke.TaskList;
 import duke.UI;
 import duke.Storage;
 import duke.DukeException;
-import duke.Command;
 import duke.Parser;
+import duke.command.Command;
 
 /**
  * Duke Class to read input commands and accordingly create a list of task.

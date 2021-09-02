@@ -1,4 +1,6 @@
 package duke;
+import duke.task.Task;
+
 import java.util.Scanner;
 
 /**
@@ -24,21 +26,6 @@ public class UI {
      */
     public void display(String output) {
         System.out.println(ANSI_CYAN + "     " + output + ANSI_RESET);
-    }
-
-    /**
-     * Method to display all the Tasks in the Task List
-     * @param taskList The List of Tasks in Duke
-     */
-    public void printTaskList(TaskList taskList) {
-        if ((taskList != null) && (taskList.getTaskListLength() > 0)) {
-            display("Here are the tasks in your list:");
-            for (int i = 0; i < taskList.getTaskListLength(); i++) {
-                display((i + 1) + "." + taskList.getTask(i));
-            }
-        } else {
-            display("The Task List is Empty");
-        }
     }
 
     /**
@@ -84,5 +71,71 @@ public class UI {
      */
     public void showError(String error) {
         System.out.println(ANSI_RED + "     " + error + "\n     Try Again \\_(\"v\")_/" + ANSI_RESET);
+    }
+
+    /**
+     *
+     */
+    public void byCommandUi() {
+        display("Bye. Hope to see you again soon! \\_(\"v\")_/");
+    }
+
+    /**
+     *
+     * @param task
+     * @param numberOfTasks
+     */
+    public void addCommandUi(Task task, int numberOfTasks) {
+        display("Got it. I've added this task:");
+        display("  " + task);
+        display("Now you have " + numberOfTasks + " tasks in the list.");
+    }
+
+    /**
+     *
+     * @param task
+     */
+    public void deleteCommandUi(Task task) {
+        display("Noted. I've removed this task:");
+        display("  " + task);
+    }
+
+    /**
+     *
+     * @param task
+     */
+    public void doneCommandUi(Task task) {
+        display("Nice! I've marked this task as done:");
+        display("  " + task);
+    }
+
+    /**
+     *
+     * @param taskList
+     */
+    public void findCommandUi(TaskList taskList) {
+        if ((taskList != null) && (taskList.getTaskListLength() > 0)) {
+            display("Here are the tasks with the search parameters:");
+            for (int i = 0; i < taskList.getTaskListLength(); i++) {
+                display((i + 1) + "." + taskList.getTask(i));
+            }
+        } else {
+            display("There are no Tasks with the given parameters");
+        }
+    }
+
+    /**
+     * Method to display all the Tasks in the Task List
+     * @param taskList The List of Tasks in Duke
+     */
+    public void listCommandUi(TaskList taskList) {
+        if ((taskList != null) && (taskList.getTaskListLength() > 0)) {
+            display("Here are the tasks in your list:");
+            for (int i = 0; i < taskList.getTaskListLength(); i++) {
+                display((i + 1) + "." + taskList.getTask(i));
+            }
+        } else {
+            display("The Task List is Empty");
+        }
     }
 }
